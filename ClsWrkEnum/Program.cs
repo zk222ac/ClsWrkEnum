@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using ClsWrkEnum;
+
 
 namespace ClsWrkEnum
 {
@@ -10,12 +13,21 @@ namespace ClsWrkEnum
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
+            Random ran = new Random();
+
+            for (int i = 0; i < 100; i++)
+            {
+                int suits = ran.Next(4);
+                int values = ran.Next(1, 14);
+                Card card = new Card((Card.Suits)suits, (Card.Values)values);
+                Console.WriteLine(card.Name());
+                Thread.Sleep(1000);
+            }
+            
+
             Console.WriteLine("Hello World!");
             Console.ReadKey();
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
-        }
+         }
     }
 }
